@@ -21,19 +21,27 @@ public abstract class DmdsObjectEJB<T extends DmdsObject> {
     protected Class<T> entityClass;
     @EJB(name = "MessengerEJB")
     protected MessengerEJB messenger;
+    
+    public T newObject() {
+        try {
+            return (T) entityClass.newInstance();
+        } catch (Exception ex) {
+            ex.printStackTrace(System.out);
+            return null;
+        }
+    }
 
     @Logged
     public T findById(Long id) {
-//        System.out.println("Testing");
-//        messenger.sendMessage("Test test test");
         return (T) em.find(entityClass, id);
     }
     
+    @Logged
     public T findById(String id) {
         return findById(Long.parseLong(id));
     }
     
-    public List findAll() {
+    public List<T> findAll() {
         return em.createQuery("select x from " + entityClass.getSimpleName() + " x").getResultList();
     }
     
