@@ -30,7 +30,7 @@ class LogInterceptor {
             e.printStackTrace(System.out);
             return null;
         }
-        if (obj != null) messenger.sendMessage(obj.getId().toString() + ":" + ctx.getMethod().getName() + ":" + obj.toXML());
+        if (obj != null) messenger.sendMessage(ctx.getMethod().getName() + ":" + obj.toXML());
         return obj;
     }
 }
