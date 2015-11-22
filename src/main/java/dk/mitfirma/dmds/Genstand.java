@@ -21,16 +21,20 @@ public class Genstand implements DmdsObject, Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private String parentId;
     private String genstandsnummer;
     private String navn;
     private String beskrivelse;
 
     public Genstand() {}
     
-    public Long getId() { return id; }
-    public void setId(Long x) { id = x; }
-    public void setId(String x) { setId(Long.parseLong(x)); }
-
+    @Override public Long getId() { return id; }
+    @Override public void setId(Long x) { id = x; }
+    @Override public void setId(String x) { setId(Long.parseLong(x)); }
+        
+    @Override public String getParentId() { return parentId; }
+    @Override public void setParentId(String x) { parentId = x; }
+    
     public String getGenstandsnummer() { return genstandsnummer; }
     public void setGenstandsnummer(String x) { genstandsnummer = x; }
 
@@ -62,20 +66,21 @@ public class Genstand implements DmdsObject, Serializable {
 
     @Override
     public String toString() {
-        return "DMDS.Genstand[ id=" + id + " ]";
+        return "Genstand[id=" + id + "]";
     }
     
     @Override
     public String toXML() {
-        return "<dmdsObjekt><genstand>" + 
+        return "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" +
+                "<genstand id=\"" + id + "\" parentId=\"" + parentId + "\">" + 
                 "<genstandsnummer>" + genstandsnummer + "</genstandsnummer>" +
                 "<navn>" + navn + "</navn>" +
                 "<beskrivelse>" + beskrivelse + "</beskrivelse>" +
-                "</genstand></dmdsObjekt>";
+                "</genstand>";
     }
     
     @Override
-    public DmdsObject fromXML(String xml) {
+    public Genstand fromXML(String xml) {
         DmdsParser parser = new DmdsParser(xml, this);
         parser.readDmds();
         return this;
