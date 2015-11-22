@@ -11,6 +11,10 @@ package dk.mitfirma.dmds;
  */
 public interface DmdsObject {
     public Long getId();
+    public void setId(Long id);
+    public void setId(String id);
+    public String getParentId();
+    public void setParentId(String id);
     public String toXML();
     public DmdsObject fromXML(String xml);
 }
