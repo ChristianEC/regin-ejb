@@ -17,18 +17,8 @@ import org.apache.camel.impl.DefaultCamelContext;
  *
  * @author christian
  */
-/**@JMSDestinationDefinition(
-        name = "java:global/jms/reginEventQ",
-        interfaceName = "javax.jms.Queue",
-        resourceAdapter = "activemq-rar",
-        properties = {"PhysicalName=reginEventQ"})*/
 @Stateless(name = "MessengerEJB")
 public class MessengerEJB {
-    /**@Resource(lookup = "java:global/jms/reginEventQ")
-    private Queue queue;
-    @Inject
-    @JMSConnectionFactory("jms/activemqConnectionFactory")
-    private JMSContext context;*/
     private CamelContext myCamelContext;
     private ProducerTemplate myTemplate;
 
