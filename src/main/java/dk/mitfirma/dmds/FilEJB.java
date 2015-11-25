@@ -13,9 +13,4 @@ import javax.ejb.Stateless;
  * @author christian
  */
 @Stateless(name = "FilEJB")
-public class FilEJB extends DmdsObjectEJB<Fil> {
-    @PostConstruct
-    public void initialize() {
-        entityClass = Fil.class;
-    }
-}
+public class FilEJB extends DmdsObjectEJB<Fil> {}

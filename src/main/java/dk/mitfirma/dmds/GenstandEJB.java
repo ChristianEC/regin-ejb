@@ -13,9 +13,4 @@ import javax.ejb.Stateless;
  * @author christian
  */
 @Stateless(name = "GenstandEJB")
-public class GenstandEJB extends DmdsObjectEJB<Genstand> {
-    @PostConstruct
-    public void initialize() {
-        entityClass = Genstand.class;
-    }
-}
+public class GenstandEJB extends DmdsObjectEJB<Genstand> {}

@@ -13,9 +13,4 @@ import javax.ejb.Stateless;
  * @author christian
  */
 @Stateless(name = "SagEJB")
-public class SagEJB extends DmdsObjectEJB<Sag> {
-    @PostConstruct
-    public void initialize() {
-        entityClass = Sag.class;
-    }
-}
+public class SagEJB extends DmdsObjectEJB<Sag> {}

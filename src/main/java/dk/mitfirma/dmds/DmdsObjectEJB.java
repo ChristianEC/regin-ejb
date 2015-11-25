@@ -4,7 +4,9 @@
  */
 package dk.mitfirma.dmds;
 
+import java.lang.reflect.ParameterizedType;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -18,9 +20,15 @@ import javax.persistence.PersistenceContext;
 public abstract class DmdsObjectEJB<T extends DmdsObject> {
     @PersistenceContext(unitName = "ReginPU")
     protected EntityManager em;
-    protected Class<T> entityClass;
     @EJB(name = "MessengerEJB")
     protected MessengerEJB messenger;
+    protected Class<T> entityClass;
+    
+    @PostConstruct
+    private void postConstruct() {
+        // Ugly reflection to determine entity class corresponding to the EJB
+        entityClass = (Class <T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
+    }
     
     public T newObject() {
         try {
