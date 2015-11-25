@@ -63,8 +63,8 @@ public class DmdsParser {
                     }
                     case (CHARACTERS): {
                         textData = event.asCharacters().getData().trim();
-                       if (textData.isEmpty()) nextToken(); // ignore white space
-                       break;
+                        if (textData.isEmpty()) nextToken(); // ignore white space
+                        break;
                     }
                 }
             } catch (XMLStreamException e) {
