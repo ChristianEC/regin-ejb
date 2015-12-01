@@ -5,12 +5,11 @@
  */
 package dk.mitfirma.dmds;
 
-import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
 
 /**
  *
  * @author christian
  */
-@Stateless(name = "GenstandEJB")
+@Stateless
 public class GenstandEJB extends DmdsObjectEJB<Genstand> {}

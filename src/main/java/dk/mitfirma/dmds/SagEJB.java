@@ -5,12 +5,11 @@
  */
 package dk.mitfirma.dmds;
 
-import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
 
 /**
  *
  * @author christian
  */
-@Stateless(name = "SagEJB")
+@Stateless
 public class SagEJB extends DmdsObjectEJB<Sag> {}
